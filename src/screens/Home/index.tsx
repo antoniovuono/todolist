@@ -36,7 +36,7 @@ export const Home = () => {
             maxLength={30}
           />
 
-          <SearchButton />
+          <SearchButton activeOpacity={0.8} />
         </SearchContent>
       </Header>
       <TasksMenuContent>
@@ -44,7 +44,7 @@ export const Home = () => {
           <TasksInfos>Criadas</TasksInfos>
 
           <TaskNumberContent>
-            <TaskNumber>0</TaskNumber>
+            <TaskNumber>{tasks.length}</TaskNumber>
           </TaskNumberContent>
         </TaskInfosContent>
 
