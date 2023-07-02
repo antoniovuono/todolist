@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Container,
   Header,
   SearchContent,
+  TaskGroupContent,
   TaskInfosContent,
   TaskNumber,
   TaskNumberContent,
@@ -16,26 +17,10 @@ import { SearchButton } from "../../components/Search/SearchButton";
 import { useTheme } from "styled-components";
 import { Divider } from "../../components/Divider";
 import { NoneRegisteredToast } from "../../components/NoneRegisteredToast";
-
-const tasks = [
-  {
-    id: 1,
-    done: false,
-    description: "Limpar a casa",
-  },
-  {
-    id: 2,
-    done: false,
-    description: "Banho no cachorro",
-  },
-  {
-    id: 3,
-    done: true,
-    description: "Fazer o almoço",
-  },
-];
+import { ITask, Task } from "../../components/Task";
 
 export const Home = () => {
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const { colors } = useTheme();
 
   return (
@@ -54,7 +39,6 @@ export const Home = () => {
           <SearchButton />
         </SearchContent>
       </Header>
-
       <TasksMenuContent>
         <TaskInfosContent>
           <TasksInfos>Criadas</TasksInfos>
@@ -73,9 +57,17 @@ export const Home = () => {
         </TaskInfosContent>
       </TasksMenuContent>
 
-      <Divider />
-
-      <NoneRegisteredToast />
+      {tasks.length ? (
+        <TaskGroupContent>
+          <Task description="Lavar o carro" isChecked />
+          <Task description="Lavar o carro" isChecked />
+        </TaskGroupContent>
+      ) : (
+        <>
+          <Divider />
+          <NoneRegisteredToast />
+        </>
+      )}
     </Container>
   );
 };
