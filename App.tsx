@@ -8,7 +8,7 @@ import {
   Inter_700Bold,
   useFonts,
 } from "@expo-google-fonts/inter";
-import { ActivityIndicator, StatusBar, View } from "react-native";
+import { StatusBar } from "react-native";
 import { InitialLoader } from "./src/components/InitialLoader";
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
         translucent
         barStyle="light-content"
       />
-      {!fontsLoaded ? <InitialLoader /> : <Home />}
+      {fontsLoaded ? <InitialLoader /> : <Home />}
     </ThemeProvider>
   );
 };
