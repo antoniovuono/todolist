@@ -25,7 +25,7 @@ const App = () => {
         translucent
         barStyle="light-content"
       />
-      {fontsLoaded ? <InitialLoader /> : <Home />}
+      {!fontsLoaded ? <InitialLoader /> : <Home />}
     </ThemeProvider>
   );
 };
