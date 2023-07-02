@@ -41,7 +41,7 @@ export const TasksInfos = styled.Text<{ isPurple?: boolean }>`
    font-size: 14px;
    
    ${({theme, isPurple}) => css`
-      color: ${ isPurple ? theme.colors.PURPLE : theme.colors.LIGHT_BLUE};
+      color: ${isPurple ? theme.colors.PURPLE : theme.colors.LIGHT_BLUE};
       font-family: ${theme.fonts.PRIMARY_BOLD};
    `}
 `;
@@ -61,3 +61,5 @@ export const TaskNumber = styled.Text<{ isPurple?: boolean }>`
       font-family: ${theme.fonts.PRIMARY_BOLD};
    `}
 `;
+
+

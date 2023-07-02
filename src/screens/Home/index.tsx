@@ -14,6 +14,26 @@ import Logotipo from "../../assets/images/logo.svg";
 import { SearchInput } from "../../components/Search/SearchInput";
 import { SearchButton } from "../../components/Search/SearchButton";
 import { useTheme } from "styled-components";
+import { Divider } from "../../components/Divider";
+import { NoneRegisteredToast } from "../../components/NoneRegisteredToast";
+
+const tasks = [
+  {
+    id: 1,
+    done: false,
+    description: "Limpar a casa",
+  },
+  {
+    id: 2,
+    done: false,
+    description: "Banho no cachorro",
+  },
+  {
+    id: 3,
+    done: true,
+    description: "Fazer o almoço",
+  },
+];
 
 export const Home = () => {
   const { colors } = useTheme();
@@ -52,6 +72,10 @@ export const Home = () => {
           </TaskNumberContent>
         </TaskInfosContent>
       </TasksMenuContent>
+
+      <Divider />
+
+      <NoneRegisteredToast />
     </Container>
   );
 };
