@@ -28,6 +28,7 @@ export const TasksMenuContent = styled.View`
    margin-top: 28px;
    flex-direction: row;
    justify-content: space-between;
+
 `;
 
 export const TaskInfosContent = styled.View`

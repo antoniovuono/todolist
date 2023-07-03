@@ -71,6 +71,7 @@ export const Home = () => {
               <Task description={item.description} isChecked={isChecked} />
             )}
             estimatedItemSize={10}
+            showsVerticalScrollIndicator={false}
           />
         </TaskGroupContent>
       ) : (
