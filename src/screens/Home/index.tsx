@@ -18,10 +18,14 @@ import { useTheme } from "styled-components";
 import { Divider } from "../../components/Divider";
 import { NoneRegisteredToast } from "../../components/NoneRegisteredToast";
 import { ITask, Task } from "../../components/Task";
+import { useTask } from "../../hooks/useTask";
+import { FlatList } from "react-native";
+import { FlashList } from "@shopify/flash-list";
 
 export const Home = () => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
   const { colors } = useTheme();
+  const { tasks, description, setDescription, handleAddTask, isChecked } =
+    useTask();
 
   return (
     <Container>
@@ -34,9 +38,11 @@ export const Home = () => {
             placeholderTextColor={colors.DARK_300}
             autoCapitalize="none"
             maxLength={30}
+            onChangeText={setDescription}
+            value={description}
           />
 
-          <SearchButton activeOpacity={0.8} />
+          <SearchButton activeOpacity={0.8} onPress={handleAddTask} />
         </SearchContent>
       </Header>
       <TasksMenuContent>
@@ -59,8 +65,13 @@ export const Home = () => {
 
       {tasks.length ? (
         <TaskGroupContent>
-          <Task description="Lavar o carro" isChecked />
-          <Task description="Lavar o carro" isChecked />
+          <FlashList
+            data={tasks}
+            renderItem={({ item }) => (
+              <Task description={item.description} isChecked={isChecked} />
+            )}
+            estimatedItemSize={10}
+          />
         </TaskGroupContent>
       ) : (
         <>

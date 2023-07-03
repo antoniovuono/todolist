@@ -12,6 +12,7 @@ import {
 } from "./styles";
 
 export interface ITask {
+  id?: string;
   description: string;
   isChecked: boolean;
 }

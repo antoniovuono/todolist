@@ -63,6 +63,8 @@ export const TaskNumber = styled.Text<{ isPurple?: boolean }>`
 `;
 
 export const TaskGroupContent = styled.View`
+   flex: 1;
+   width: 100%;
    padding: 24px;
 `;
 
