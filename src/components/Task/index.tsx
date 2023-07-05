@@ -16,9 +16,15 @@ export interface ITask {
   description: string;
   isChecked: boolean;
   onMarkedAsDone?: (id: string) => void;
+  onDeleted?: (id: string) => void;
 }
 
-export const Task = ({ description, isChecked, onMarkedAsDone }: ITask) => {
+export const Task = ({
+  description,
+  isChecked,
+  onMarkedAsDone,
+  onDeleted,
+}: ITask) => {
   return (
     <Container>
       <CheckContent onPress={onMarkedAsDone}>
@@ -31,7 +37,7 @@ export const Task = ({ description, isChecked, onMarkedAsDone }: ITask) => {
         </Description>
       </DescriptionContent>
 
-      <DeleteContent>
+      <DeleteContent onPress={onDeleted}>
         <DeleteIcon height={40} width={40} />
       </DeleteContent>
     </Container>

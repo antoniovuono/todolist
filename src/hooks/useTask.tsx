@@ -28,8 +28,8 @@ export const useTask = () => {
   };
 
   const handleMarkedAsDone = (id: string) => {
-    setTasks((prevTask) =>
-      prevTask.map((task) => {
+    setTasks((prevState) =>
+      prevState.map((task) => {
         if (task.id === id) {
           return {
             ...task,
@@ -41,6 +41,14 @@ export const useTask = () => {
     );
   };
 
+  const handleDeleteTask = (id: string) => {
+    const updatedTasks = [...tasks];
+    const taskIndex = updatedTasks.findIndex((task) => task.id === id);
+    updatedTasks.splice(taskIndex, 1);
+
+    setTasks(updatedTasks);
+  };
+
   return {
     tasks,
     description,
@@ -48,5 +56,6 @@ export const useTask = () => {
     handleAddTask,
     handleMarkedAsDone,
     completedTasks,
+    handleDeleteTask,
   };
 };

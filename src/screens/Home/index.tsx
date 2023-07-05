@@ -17,9 +17,8 @@ import { SearchButton } from "../../components/Search/SearchButton";
 import { useTheme } from "styled-components";
 import { Divider } from "../../components/Divider";
 import { NoneRegisteredToast } from "../../components/NoneRegisteredToast";
-import { ITask, Task } from "../../components/Task";
+import { Task } from "../../components/Task";
 import { useTask } from "../../hooks/useTask";
-import { FlatList } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 
 export const Home = () => {
@@ -31,6 +30,7 @@ export const Home = () => {
     handleAddTask,
     handleMarkedAsDone,
     completedTasks,
+    handleDeleteTask,
   } = useTask();
 
   return (
@@ -78,6 +78,7 @@ export const Home = () => {
                 onMarkedAsDone={() => handleMarkedAsDone(item.id as string)}
                 description={item.description}
                 isChecked={item.isChecked}
+                onDeleted={() => handleDeleteTask(item.id as string)}
               />
             )}
             estimatedItemSize={10}
