@@ -7,6 +7,8 @@ export const useTask = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [description, setDescription] = useState("");
 
+  const completedTasks = tasks.filter((task) => task.isChecked === true);
+
   const handleAddTask = () => {
     if (!description) {
       return Alert.alert(
@@ -45,5 +47,6 @@ export const useTask = () => {
     setDescription,
     handleAddTask,
     handleMarkedAsDone,
+    completedTasks,
   };
 };

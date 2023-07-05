@@ -30,6 +30,7 @@ export const Home = () => {
     setDescription,
     handleAddTask,
     handleMarkedAsDone,
+    completedTasks,
   } = useTask();
 
   return (
@@ -63,7 +64,7 @@ export const Home = () => {
           <TasksInfos isPurple>Concluídas</TasksInfos>
 
           <TaskNumberContent>
-            <TaskNumber>0</TaskNumber>
+            <TaskNumber>{completedTasks.length}</TaskNumber>
           </TaskNumberContent>
         </TaskInfosContent>
       </TasksMenuContent>
