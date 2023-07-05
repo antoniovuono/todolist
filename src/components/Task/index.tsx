@@ -15,12 +15,15 @@ export interface ITask {
   id?: string;
   description: string;
   isChecked: boolean;
+  onMarkedAsDone?: (id: string) => void;
 }
 
-export const Task = ({ description, isChecked }: ITask) => {
+export const Task = ({ description, isChecked, onMarkedAsDone }: ITask) => {
   return (
     <Container>
-      <CheckContent>{isChecked ? <CheckedIcon /> : <CheckIcon />}</CheckContent>
+      <CheckContent onPress={onMarkedAsDone}>
+        {isChecked ? <CheckedIcon /> : <CheckIcon />}
+      </CheckContent>
 
       <DescriptionContent>
         <Description isChecked={isChecked} numberOfLines={2}>
@@ -29,7 +32,7 @@ export const Task = ({ description, isChecked }: ITask) => {
       </DescriptionContent>
 
       <DeleteContent>
-        <DeleteIcon />
+        <DeleteIcon height={40} width={40} />
       </DeleteContent>
     </Container>
   );

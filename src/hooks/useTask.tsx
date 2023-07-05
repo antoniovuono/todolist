@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ITask } from "../components/Task";
 import { Alert } from "react-native";
+import uuid from "react-native-uuid";
 
 export const useTask = () => {
-  const [tasks, setTask] = useState<ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [description, setDescription] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
 
   const handleAddTask = () => {
     if (!description) {
@@ -16,13 +16,27 @@ export const useTask = () => {
     }
 
     const newTask = {
-      id: "1",
+      id: uuid.v4() as string,
       description: description,
       isChecked: false,
     };
 
-    setTask([...tasks, newTask]);
+    setTasks([...tasks, newTask]);
     setDescription("");
+  };
+
+  const handleMarkedAsDone = (id: string) => {
+    setTasks((prevTask) =>
+      prevTask.map((task) => {
+        if (task.id === id) {
+          return {
+            ...task,
+            isChecked: !task.isChecked,
+          };
+        }
+        return task;
+      })
+    );
   };
 
   return {
@@ -30,6 +44,6 @@ export const useTask = () => {
     description,
     setDescription,
     handleAddTask,
-    isChecked,
+    handleMarkedAsDone,
   };
 };

@@ -24,8 +24,13 @@ import { FlashList } from "@shopify/flash-list";
 
 export const Home = () => {
   const { colors } = useTheme();
-  const { tasks, description, setDescription, handleAddTask, isChecked } =
-    useTask();
+  const {
+    tasks,
+    description,
+    setDescription,
+    handleAddTask,
+    handleMarkedAsDone,
+  } = useTask();
 
   return (
     <Container>
@@ -68,7 +73,11 @@ export const Home = () => {
           <FlashList
             data={tasks}
             renderItem={({ item }) => (
-              <Task description={item.description} isChecked={isChecked} />
+              <Task
+                onMarkedAsDone={() => handleMarkedAsDone(item.id as string)}
+                description={item.description}
+                isChecked={item.isChecked}
+              />
             )}
             estimatedItemSize={10}
             showsVerticalScrollIndicator={false}
