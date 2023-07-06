@@ -1,5 +1,3 @@
-# todolist
-
 ![Logo do TodoList](/src/assets/images/logo.svg)
 
 Esse projeto foi desenvolvido durante o desafio 01 do programa intensivo de ensino da rocketseat conhecido como Ignite e tem o objetivo de me fazer praticar alguns conceitos bases do desenvolvimento mobile com react-native.
